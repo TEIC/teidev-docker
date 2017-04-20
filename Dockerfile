@@ -11,7 +11,7 @@ RUN find . -iname "*.ttf" | rename 's/\ /_/g'
 RUN rm hannom.zip
 RUN fc-cache -f -v
 RUN apt-get -y install fonts-ipafont-gothic fonts-ipafont-mincho
-RUN apt-get -y install ant git libxml2 libxml2-utils devscripts xsltproc libsaxonhe-java debhelper trang jing
+RUN apt-get -y install ant ant-contrib git libxml2 libxml2-utils devscripts xsltproc libsaxonhe-java debhelper trang jing
 RUN apt-get -y install texlive-xetex texlive-latex-extra texlive-generic-recommended texlive-fonts-recommended
 RUN apt-get -y install libexpat-dev
 WORKDIR /tmp
