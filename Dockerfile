@@ -35,7 +35,6 @@ RUN apt-get update && apt-get -y install fonts-ipafont-gothic \
   texlive-generic-recommended \
   texlive-fonts-recommended \
   libexpat-dev
-WORKDIR /tmp
 RUN git clone https://github.com/dtolpin/RNV.git rnv && \
     cd rnv && \
     make -f Makefile.gnu rnv && \
