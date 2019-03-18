@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 RUN apt-get update && apt-get -y install openjdk-7-jdk \
   ttf-dejavu \
   fonts-arphic-ukai \
