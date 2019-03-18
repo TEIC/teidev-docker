@@ -1,13 +1,12 @@
 FROM ubuntu:18.04
-RUN apt-get update && apt-get -y install openjdk-7-jdk \
+RUN apt-get update && apt-get -y install openjdk-8-jdk \
   ttf-dejavu \
   fonts-arphic-ukai \
   fonts-arphic-uming \
-  ttf-baekmuk \
-  ttf-junicode \
-  ttf-kochi-gothic \
-  ttf-kochi-mincho \
+  fonts-baekmuk \
+  fonts-junicode \
   fonts-linuxlibertine \
+  rename \
   wget \
   curl \
   zip
