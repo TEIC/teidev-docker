@@ -41,5 +41,8 @@ RUN git clone https://github.com/dtolpin/RNV.git rnv && \
     make -f Makefile.gnu rnv && \
     cp rnv /usr/bin/ && \
     cd ../
+RUN echo "#! /bin/bash" > /usr/local/bin/saxon \
+    && echo "java -jar /usr/share/java/Saxon-HE.jar \$*" >> /usr/local/bin/saxon \
+    && chmod 755 /usr/local/bin/saxon
 WORKDIR /
 ENTRYPOINT ["bash"]
