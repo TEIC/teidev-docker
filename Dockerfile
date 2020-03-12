@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+FROM debian:10.3
+#RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 RUN apt-get update && apt-get -y install openjdk-8-jdk \
   ttf-dejavu \
