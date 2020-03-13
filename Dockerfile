@@ -1,4 +1,4 @@
-FROM debian:10.3
+FROM debian:buster
 #RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 RUN apt-get update && apt-get -y install openjdk-8-jdk \
