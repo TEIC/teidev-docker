@@ -1,13 +1,11 @@
-FROM ubuntu:18.04
+FROM debian:buster
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-RUN apt-get update && apt-get -y install openjdk-8-jdk \
+RUN apt-get update && apt-get -y install openjdk-11-jdk \
   ttf-dejavu \
-  fonts-arphic-ukai \
-  fonts-arphic-uming \
-  fonts-baekmuk \
   fonts-junicode \
   fonts-linuxlibertine \
+  fonts-noto-cjk \
   rename \
   wget \
   curl \
@@ -19,9 +17,7 @@ RUN unzip hannom.zip
 RUN find . -iname "*.ttf" | rename 's/\ /_/g'
 RUN rm hannom.zip
 RUN fc-cache -f -v
-RUN apt-get update && apt-get -y install fonts-ipafont-gothic \
-  fonts-ipafont-mincho \
-  ant \
+RUN apt-get update && apt-get -y install ant \
   git \
   libxml2 \
   libxml2-utils \
