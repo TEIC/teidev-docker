@@ -25,6 +25,7 @@ RUN apt-get update && apt-get -y install fonts-ipafont-gothic \
   git \
   libxml2 \
   libxml2-utils \
+  tidy \
   devscripts \
   xsltproc \
   libsaxonhe-java \
