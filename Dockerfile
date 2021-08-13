@@ -19,6 +19,7 @@ RUN apt-get update && apt-get -y install openjdk-11-jdk-headless \
   git \
   libxml2 \
   libxml2-utils \
+  tidy \
   devscripts \
   xsltproc \
   libsaxonhe-java \
