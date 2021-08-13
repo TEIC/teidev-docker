@@ -6,33 +6,16 @@ RUN mkdir /usr/share/man/man1/
 RUN sed -i "s#deb http://deb.debian.org/debian bullseye main#deb http://deb.debian.org/debian bullseye main contrib#g" /etc/apt/sources.list
 RUN apt-get update && apt-get -y install openjdk-11-jdk-headless \
   ttf-dejavu \
-  fonts-arphic-ukai \
-  fonts-arphic-uming \
-  fonts-baekmuk \
   fonts-junicode \
   fonts-linuxlibertine \
   fonts-noto \
-  ttf-mscorefonts-installer \
+  fonts-noto-cjk \
+  fonts-noto-cjk-extra \
   rename \
   wget \
   curl \
-  zip
-RUN mkdir /usr/share/fonts/truetype/hannom
-WORKDIR /usr/share/fonts/truetype/hannom
-RUN wget -O hannom.zip http://downloads.sourceforge.net/project/vietunicode/hannom/hannom%20v2005/hannomH.zip \
- unzip hannom.zip \
- find . -iname "*.ttf" | rename 's/\ /_/g' \
- rm hannom.zip 
-RUN mkdir /usr/share/fonts/truetype/newathenaunicode
-WORKDIR /usr/share/fonts/truetype/newathenaunicode
-RUN WGET https://apagreekkeys.org/fonts/NAU5_007.zip \
- unzip NAU5_007.zip \
- mv NAU5_007/*.ttf ./ \
- rm -rf NAU5_007*
-RUN fc-cache -f -v
-RUN apt-get update && apt-get -y install fonts-ipafont-gothic \
-  fonts-ipafont-mincho \
   ant \
+  ant-contrib \
   git \
   libxml2 \
   libxml2-utils \
