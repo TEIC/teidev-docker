@@ -5,7 +5,7 @@ RUN mkdir /usr/share/man/man1/
 # Enable contrib repo
 RUN sed -i "s#deb http://deb.debian.org/debian bullseye main#deb http://deb.debian.org/debian bullseye main contrib#g" /etc/apt/sources.list
 RUN apt-get update && apt-get -y install openjdk-11-jdk-headless \
-  ttf-dejavu \
+  fonts-dejavu \
   fonts-junicode \
   fonts-linuxlibertine \
   fonts-noto \
@@ -22,7 +22,6 @@ RUN apt-get update && apt-get -y install openjdk-11-jdk-headless \
   tidy \
   devscripts \
   xsltproc \
-  libsaxonhe-java \
   debhelper \
   trang \
   jing \
@@ -37,8 +36,13 @@ RUN git clone https://github.com/dtolpin/RNV.git rnv && \
     cp rnv /usr/bin/ && \
     cd ../ \
     rm -rf rnv
+# Packaged Saxon is still v9.9.1.5
+RUN wget -O SaxonHE10.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-5J.zip
+RUN unzip -d SaxonHE10 SaxonHE10.zip
+RUN mv SaxonHE10/saxon-he-10.5.jar /usr/share/java/
+RUN ln -s /usr/share/java/saxon-he-10.5.jar /usr/share/java/saxon-he-10.jar
 RUN echo "#! /bin/bash" > /usr/local/bin/saxon \
-    && echo "java -jar /usr/share/java/Saxon-HE.jar \$*" >> /usr/local/bin/saxon \
+    && echo "java -jar /usr/share/java/saxon-he-10.jar \$*" >> /usr/local/bin/saxon \
     && chmod 755 /usr/local/bin/saxon
 WORKDIR /
 ENTRYPOINT ["bash"]
