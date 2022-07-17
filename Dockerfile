@@ -1,10 +1,7 @@
 FROM debian:bullseye-slim
-#RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-# Hack to prevent openjdk-11 install failing
-RUN mkdir /usr/share/man/man1/ 
 # Enable contrib repo
 RUN sed -i "s#deb http://deb.debian.org/debian bullseye main#deb http://deb.debian.org/debian bullseye main contrib#g" /etc/apt/sources.list
-RUN apt-get update && apt-get -y install openjdk-11-jdk-headless \
+RUN apt-get update && apt-get -y install openjdk-17-jdk-headless \
   fonts-dejavu \
   fonts-junicode \
   fonts-linuxlibertine \
@@ -36,13 +33,13 @@ RUN git clone https://github.com/dtolpin/RNV.git rnv && \
     cp rnv /usr/bin/ && \
     cd ../ \
     rm -rf rnv
-# Packaged Saxon is still v9.9.1.5
-RUN wget -O SaxonHE10.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/10/Java/SaxonHE10-5J.zip
-RUN unzip -d SaxonHE10 SaxonHE10.zip
-RUN mv SaxonHE10/saxon-he-10.5.jar /usr/share/java/
-RUN ln -s /usr/share/java/saxon-he-10.5.jar /usr/share/java/saxon-he-10.jar
-RUN echo "#! /bin/bash" > /usr/local/bin/saxon \
-    && echo "java -jar /usr/share/java/saxon-he-10.jar \$*" >> /usr/local/bin/saxon \
+# Stylesheets Saxon is older, so get latest
+RUN wget -O SaxonHE11.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/11/Java/SaxonHE11-3J.zip; \
+    unzip -d SaxonHE11 SaxonHE11.zip; \
+    mv SaxonHE10/saxon-he-11.3.jar /usr/share/java/; \
+    ln -s /usr/share/java/saxon-he-11.3.jar /usr/share/java/saxon-he-11.jar; \
+    echo "#! /bin/bash" > /usr/local/bin/saxon \
+    && echo "java -jar /usr/share/java/saxon-he-11.jar \$*" >> /usr/local/bin/saxon \
     && chmod 755 /usr/local/bin/saxon
 WORKDIR /
 ENTRYPOINT ["bash"]
