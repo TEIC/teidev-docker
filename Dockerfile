@@ -9,6 +9,7 @@ RUN apt-get update && apt-get -y install openjdk-17-jdk-headless \
   fonts-noto-cjk \
   fonts-noto-cjk-extra \
   rename \
+  rsync \
   wget \
   curl \
   ant \
