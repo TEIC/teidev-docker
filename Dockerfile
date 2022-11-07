@@ -36,14 +36,15 @@ RUN git clone https://github.com/dtolpin/RNV.git rnv && \
     cd ../ \
     rm -rf rnv
 # Stylesheets Saxon is older, so get latest
-RUN wget -O SaxonHE11.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/11/Java/SaxonHE11-3J.zip; \
+RUN wget -O SaxonHE11.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/11/Java/SaxonHE11-4J.zip; \
     unzip -d SaxonHE11 SaxonHE11.zip; \
-    mv SaxonHE11/saxon-he-11.3.jar /usr/share/java/; \
+    mv SaxonHE11/saxon-he-11.4.jar /usr/share/java/; \
     mkdir /usr/share/java/saxon-11; \
     cp SaxonHE11/lib/*.jar /usr/share/java/saxon-11; \
-    ln -s /usr/share/java/saxon-he-11.3.jar /usr/share/java/saxon-he-11.jar; \
+    ln -s /usr/share/java/saxon-he-11.4.jar /usr/share/java/saxon-he-11.jar; \
     echo "#! /bin/bash" > /usr/local/bin/saxon \
     && echo "java -cp /usr/share/java/saxon-11/*:/usr/share/java/saxon-he-11.jar net.sf.saxon.Transform \$*" >> /usr/local/bin/saxon \
     && chmod 755 /usr/local/bin/saxon
+
 WORKDIR /
 ENTRYPOINT ["bash"]
