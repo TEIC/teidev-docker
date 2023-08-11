@@ -29,7 +29,7 @@ RUN apt-get update && apt-get -y install openjdk-17-jdk-headless \
   libexpat-dev \
   tree \
   xzdec
-RUN git clone https://github.com/dtolpin/RNV.git rnv && \
+RUN git clone https://github.com/hartwork/rnv.git rnv && \
     cd rnv && \
     make -f Makefile.gnu rnv && \
     cp rnv /usr/bin/ && \
