@@ -22,6 +22,7 @@ RUN apt-get update && apt-get -y install openjdk-11-jdk \
   debhelper \
   trang \
   jing \
+  rsync \
   texlive-xetex \
   texlive-latex-extra \
   texlive-generic-recommended \
