@@ -29,11 +29,14 @@ RUN apt-get update && apt-get -y install openjdk-17-jdk-headless \
   libexpat-dev \
   tree \
   xzdec
+RUN apt-get --no-install-recommends -y install asciidoc
+RUN apt-get install -y asciidoc-doc docbook-xml docbook-xsl
 RUN git clone https://github.com/hartwork/rnv.git rnv && \
     cd rnv && \
-    make -f Makefile.gnu rnv && \
-    cp rnv /usr/bin/ && \
-    cd ../ \
+    ./bootstrap && \
+    ./configure && \
+    make && \
+    make install && \
     rm -rf rnv
 # Stylesheets Saxon is older, so get latest
 RUN wget -O SaxonHE11.zip https://downloads.sourceforge.net/project/saxon/Saxon-HE/11/Java/SaxonHE11-4J.zip; \
