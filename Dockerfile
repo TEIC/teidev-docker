@@ -1,4 +1,6 @@
 FROM debian:bullseye-slim
+# Set LANG to UTF-8
+ENV LANG C.UTF-8
 # Enable contrib repo
 RUN sed -i "s#deb http://deb.debian.org/debian bullseye main#deb http://deb.debian.org/debian bullseye main contrib#g" /etc/apt/sources.list
 RUN apt-get update && apt-get -y install openjdk-17-jdk-headless \
