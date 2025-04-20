@@ -42,7 +42,7 @@ RUN git clone https://github.com/hartwork/rnv.git rnv && \
     make install && \
     rm -rf rnv
 # Stylesheets Saxon is older, so get latest
-RUN wget -O SaxonHE12.zip https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-5/SaxonHE12-5J.zip \
+RUN wget -O SaxonHE12.zip https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-5/SaxonHE12-5J.zip; \
     unzip -d SaxonHE12 SaxonHE12.zip; \
     mv SaxonHE12/saxon-he-12.5.jar /usr/share/java/; \
     mkdir /usr/share/java/saxon-12; \
